@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mogamun.github.io/sitemap.xml
