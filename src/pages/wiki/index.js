@@ -317,8 +317,8 @@ function parseTags(raw) {
   return raw.replace(/[\[\]]/g, '').split(',').map(t => t.trim()).filter(Boolean);
 }
 
-/* ── 페이지 ── */
-const WikiIndexPage = ({ data }) => {
+/* ── 콘텐츠 (재사용용) ── */
+export const BlogIndexContent = ({ data }) => {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
 
@@ -380,55 +380,60 @@ const WikiIndexPage = ({ data }) => {
     : [activeCategory].filter(c => grouped[c]);
 
   return (
-    <WikiLayout currentSlug="/wiki/">
-      <SEO title="Blog" />
-      <PageWrapper>
-        {/* 카테고리별 그리드 */}
-        {sortedCategories.length === 0 ? (
-          <EmptyState>검색 결과가 없습니다.</EmptyState>
-        ) : (
-          sortedCategories.map(cat => {
-            const color = CATEGORY_COLOR[cat];
-            return (
-              <RevealSection key={cat}>
-                <CategorySection>
-                  <CategoryHeader>
-                    <CategoryAccent $color={color} />
-                    <CategoryTitle>
-                      {CATEGORY_EMOJI[cat] || '📁'} {cat}
-                    </CategoryTitle>
-                    <CategoryCount $color={color}>{grouped[cat].length}</CategoryCount>
-                    <CategoryLine />
-                  </CategoryHeader>
-                  <CardGrid>
-                    {grouped[cat].map(item => (
-                      <WikiCard key={item.slug} to={item.slug} $color={color}>
-                        <CardTitle>{item.title}</CardTitle>
-                        {item.tags.length > 0 && (
-                          <CardTags>
-                            {item.tags.slice(0, 4).map(t => (
-                              <CardTag key={t}>#{t}</CardTag>
-                            ))}
-                          </CardTags>
+    <PageWrapper>
+      {/* 카테고리별 그리드 */}
+      {sortedCategories.length === 0 ? (
+        <EmptyState>검색 결과가 없습니다.</EmptyState>
+      ) : (
+        sortedCategories.map(cat => {
+          const color = CATEGORY_COLOR[cat];
+          return (
+            <RevealSection key={cat}>
+              <CategorySection>
+                <CategoryHeader>
+                  <CategoryAccent $color={color} />
+                  <CategoryTitle>
+                    {CATEGORY_EMOJI[cat] || '📁'} {cat}
+                  </CategoryTitle>
+                  <CategoryCount $color={color}>{grouped[cat].length}</CategoryCount>
+                  <CategoryLine />
+                </CategoryHeader>
+                <CardGrid>
+                  {grouped[cat].map(item => (
+                    <WikiCard key={item.slug} to={item.slug} $color={color}>
+                      <CardTitle>{item.title}</CardTitle>
+                      {item.tags.length > 0 && (
+                        <CardTags>
+                          {item.tags.slice(0, 4).map(t => (
+                            <CardTag key={t}>#{t}</CardTag>
+                          ))}
+                        </CardTags>
+                      )}
+                      <CardMeta>
+                        <CardDate>{item.updated || item.created}</CardDate>
+                        {item.status && (
+                          <CardStatus $s={item.status}>{item.status}</CardStatus>
                         )}
-                        <CardMeta>
-                          <CardDate>{item.updated || item.created}</CardDate>
-                          {item.status && (
-                            <CardStatus $s={item.status}>{item.status}</CardStatus>
-                          )}
-                        </CardMeta>
-                      </WikiCard>
-                    ))}
-                  </CardGrid>
-                </CategorySection>
-              </RevealSection>
-            );
-          })
-        )}
-      </PageWrapper>
-    </WikiLayout>
+                      </CardMeta>
+                    </WikiCard>
+                  ))}
+                </CardGrid>
+              </CategorySection>
+            </RevealSection>
+          );
+        })
+      )}
+    </PageWrapper>
   );
 };
+
+/* ── /wiki/ 페이지 ── */
+const WikiIndexPage = ({ data }) => (
+  <WikiLayout currentSlug="/wiki/">
+    <SEO title="Blog" />
+    <BlogIndexContent data={data} />
+  </WikiLayout>
+);
 
 export default WikiIndexPage;
 
