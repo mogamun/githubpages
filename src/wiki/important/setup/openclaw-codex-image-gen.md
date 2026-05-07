@@ -97,12 +97,11 @@ OpenClaw가 각 항목별로 자동으로 Codex를 호출하여 이미지를 생
 
 - 플러그인 저장소: https://github.com/jkf87/openclaw-codex-image-gen
 - OpenClaw GitHub: https://github.com/openclaw/openclaw
-- 코난쌤 영상: https://www.youtube.com/watch?v=oBO8GkhoU7I
+- 참고 영상: https://www.youtube.com/watch?v=oBO8GkhoU7I
 
 ## See also
 
-- [코난쌤](/wiki/entities/conanssam/) — 플러그인 제작자/공유자
 - [OpenClaw](/wiki/entities/openclaw/) — 플랫폼 엔티티
 - [코덱스 이미지 무제한 설정](/wiki/important/setup/codex-image-generation/) — 기존 Codex CLI 이미지 설정
-- [코난쌤 GPT 이미지 2.0 + OpenClaw](/wiki/sources/conanssam-gpt-image-2-openclaw/) — 상세 소스
+- [GPT 이미지 2.0 + OpenClaw 자동화](/wiki/sources/conanssam-gpt-image-2-openclaw/) — 상세 소스
 - [소스놀이터 GPT 이미지 2.0 코덱스 웹툰](/wiki/sources/gpt-image-2-codex-webtoon/) — 동일 주제 소스

@@ -45,7 +45,7 @@ OpenClaw 환경에서 다양한 AI CLI 도구(Gemini CLI, Codex, Claude Code, Op
 
 ## 적용 사례
 
-### 코난쌤의 14개 에이전트 운영
+### 14개 에이전트 운영 사례
 - GPT 5.4 메인 에이전트 + GLM 4.7 자문
 - 오마이클로로 라우팅
 - 블로그 5개 동시 생성, 쇼츠 7개 자동 업로드
@@ -59,7 +59,6 @@ OpenClaw 환경에서 다양한 AI CLI 도구(Gemini CLI, Codex, Claude Code, Op
 ## See also
 
 - [OpenClaw](/wiki/entities/openclaw/) — ACP를 구현한 플랫폼
-- [코난쌤](/wiki/entities/conanssam/) — ACP 실전 운영자
 - [멀티에이전트 계층](/wiki/concepts/multi-agent-hierarchy/) — 에이전트 계층 구조 패턴
 - [에이전트 조정](/wiki/concepts/agent-coordination/) — 멀티에이전트 협업 패턴
-- [코난쌤 Claude CLI x OpenClaw](/wiki/sources/conanssam-claude-cli-openclaw/) — 상세 소스
+- [Claude CLI x OpenClaw 연동](/wiki/sources/conanssam-claude-cli-openclaw/) — 상세 소스

@@ -1,5 +1,5 @@
 ---
-title: 코난쌤 — GPT 이미지 2.0 + OpenClaw 자동화
+title: GPT 이미지 2.0 + OpenClaw 자동화
 created: 2026-04-27
 updated: 2026-04-27
 tags: [source, youtube, gpt-image-2, openclaw, codex, image-generation, automation]
@@ -8,11 +8,11 @@ status: stable
 category: sources
 ---
 
-# 코난쌤 — GPT 이미지 2.0 + OpenClaw 자동화
+# GPT 이미지 2.0 + OpenClaw 자동화
 
 ## 개요
 
-코난쌤 채널의 GPT 이미지 2.0 실전 프롬프트와 OpenClaw + Codex 이미지 자동화 영상 (10분 32초). 다양한 상업용 이미지 생성 프롬프트(프로필 시트, 표정 비교, 스타일링 보드, 썸네일, 포스터, 인포그래픽, 제품 사진, 광고)를 시연하고, openclaw-codex-image-gen 플러그인으로 30개 이상 이미지를 한 번에 자동 생성하는 방법을 공개.
+GPT 이미지 2.0 실전 프롬프트와 OpenClaw + Codex 이미지 자동화 영상 (10분 32초). 다양한 상업용 이미지 생성 프롬프트(프로필 시트, 표정 비교, 스타일링 보드, 썸네일, 포스터, 인포그래픽, 제품 사진, 광고)를 시연하고, openclaw-codex-image-gen 플러그인으로 30개 이상 이미지를 한 번에 자동 생성하는 방법을 공개.
 
 ## 핵심 내용
 
@@ -67,10 +67,9 @@ category: sources
 
 ## See also
 
-- [코난쌤](/wiki/entities/conanssam/) — 엔티티 페이지
 - [OpenClaw](/wiki/entities/openclaw/) — 플랫폼 엔티티
 - [OpenClaw Codex 이미지 자동화 설정](/wiki/important/setup/openclaw-codex-image-gen/) — 플러그인 설정 가이드
-- [코난쌤 Claude CLI x OpenClaw](/wiki/sources/conanssam-claude-cli-openclaw/) — 영상 1 소스
+- [Claude CLI x OpenClaw 연동](/wiki/sources/conanssam-claude-cli-openclaw/) — 영상 1 소스
 - [소스놀이터 GPT 이미지 2.0 코덱스 웹툰](/wiki/sources/gpt-image-2-codex-webtoon/) — 동일 주제 소스
-- [스마트대디 GPT 이미지 2.0 15 활용법](/wiki/sources/gpt-image-2-15-use-cases/) — 동일 주제 소스
+- [GPT 이미지 2.0 15 활용법](/wiki/sources/gpt-image-2-15-use-cases/) — 동일 주제 소스
 - [코덱스 이미지 무제한 설정](/wiki/important/setup/codex-image-generation/) — 기존 Codex 이미지 설정

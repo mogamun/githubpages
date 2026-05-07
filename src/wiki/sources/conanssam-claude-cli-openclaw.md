@@ -1,5 +1,5 @@
 ---
-title: 코난쌤 — Claude CLI x OpenClaw 연동
+title: Claude CLI x OpenClaw 연동
 created: 2026-04-27
 updated: 2026-04-27
 tags: [source, youtube, openclaw, claude-code, acp, multi-agent, session-management]
@@ -8,11 +8,11 @@ status: stable
 category: sources
 ---
 
-# 코난쌤 — Claude CLI x OpenClaw 연동
+# Claude CLI x OpenClaw 연동
 
 ## 개요
 
-코난쌤 채널의 OpenClaw에서 Claude Code(Claude CLI)를 연동하는 방법과 멀티에이전트 운영 실전 영상 (27분 3초). ACP(Agent Client Protocol)의 개념, 퍼시스턴트 모드와 세션 스포닝의 차이, 세션 찌꺼기 메모리 누수 해결법, 14개 에이전트 운영 사례를 다룸.
+OpenClaw에서 Claude Code(Claude CLI)를 연동하는 방법과 멀티에이전트 운영 실전 영상 (27분 3초). ACP(Agent Client Protocol)의 개념, 퍼시스턴트 모드와 세션 스포닝의 차이, 세션 찌꺼기 메모리 누수 해결법, 14개 에이전트 운영 사례를 다룸.
 
 ## 핵심 내용
 
@@ -72,8 +72,7 @@ category: sources
 
 ## See also
 
-- [코난쌤](/wiki/entities/conanssam/) — 엔티티 페이지
 - [OpenClaw](/wiki/entities/openclaw/) — 플랫폼 엔티티
 - [ACP](/wiki/concepts/agent-client-protocol/) — 프로토콜 개념
-- [코난쌤 GPT 이미지 2.0 + OpenClaw](/wiki/sources/conanssam-gpt-image-2-openclaw/) — 영상 2 소스
+- [GPT 이미지 2.0 + OpenClaw 자동화](/wiki/sources/conanssam-gpt-image-2-openclaw/) — 영상 2 소스
 - [Hermes Agent](/wiki/entities/hermes-agent/) — 언급된 독립 에이전트

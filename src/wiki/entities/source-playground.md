@@ -35,6 +35,6 @@ category: entities
 - [GPT 이미지 2.0 코덱스 웹툰 자동화](/wiki/sources/gpt-image-2-codex-webtoon/)
 - [코덱스 이미지 설정 가이드](/wiki/important/setup/codex-image-generation/)
 - [OpenClaw Codex 이미지 자동화 설정](/wiki/important/setup/openclaw-codex-image-gen/) — OpenClaw 플러그인 설정
-- [코난쌤](/wiki/entities/conanssam/) — OpenClaw + GPT 이미지 2.0 자동화 시연 채널
+- [OpenClaw + GPT 이미지 2.0 자동화 시연](/wiki/sources/conanssam-gpt-image-2-openclaw/) — 동일 주제 소스
 - [투더제이](/wiki/entities/ttj/) — 바이브 코딩 유튜버
 - [시각화 프롬프트 템플릿](/wiki/concepts/visualization-prompt-template/)

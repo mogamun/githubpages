@@ -47,22 +47,20 @@ category: comparisons
 - 개발자 수준의 설정이 가능함
 
 ### 둘 다 사용 (권장)
-- 제로초의 실전 결론: **역할 분담**
+- 실전 결론: **역할 분담**
 - OpenClaw: 일상 비서, 텔레그램 자동화, 기존 맥락 활용 작업
 - Hermes: 스킬 축적 작업, 개발 실무, 세션 검색, Mem0 기반 장기 기억
 
 ## 핵심 통찰
-> "어떻게 보면 유전자가 다르다고 할 수 있겠죠. 오픈 클로는 아무리 헤르메스 따라가려고 해도 동일하게 세팅을 했을 때 헤르메스보다 장기 기억을 잘하거나 스킬을 잘 만들거나 그러지는 못하는 거 같아요." — 제로초
+> "어떻게 보면 유전자가 다르다고 할 수 있겠죠. 오픈 클로는 아무리 헤르메스 따라가려고 해도 동일하게 세팅을 했을 때 헤르메스보다 장기 기억을 잘하거나 스킬을 잘 만들거나 그러지는 못하는 거 같아요."
 
 "태어날 때의 목적"이 다른 두 에이전트는 설정으로 상호 대체 불가능. 각자의 강점에 맞춘 역할 분담이 최적.
 
 ## See also
-- [제로초 비교 영상 소스](/wiki/sources/zerocho-openclaw-vs-hermes/)
-- [고범수 Hermes Agent 리뷰](/wiki/sources/hermes-agent-review-beomsu/) — 독스 기반 기술 심층 분석
+- [OpenClaw vs Hermes 실전 비교 소스](/wiki/sources/zerocho-openclaw-vs-hermes/)
+- [Hermes Agent 독스 기반 기술 리뷰](/wiki/sources/hermes-agent-review-beomsu/) — 독스 기반 기술 심층 분석
 - [OpenClaw](/wiki/entities/openclaw/)
 - [Hermes Agent](/wiki/entities/hermes-agent/)
-- [제로초](/wiki/entities/zerocho/)
-- [고범수](/wiki/entities/beomsu-koh/)
 - [Compounding Artifact](/wiki/concepts/compounding-artifact/)
 - [Closed Learning Loop](/wiki/concepts/closed-learning-loop/)
 - [Claude Code 프레임워크 비교](/wiki/comparisons/claude-code-framework-comparison/)

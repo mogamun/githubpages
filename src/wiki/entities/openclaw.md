@@ -48,17 +48,15 @@ category: entities
 - 라이선스: MIT
 - 오마이클로(ohmyclaw): OpenClaw의 라우팅/오케스트레이션 도구
 - openclaw-codex-image-gen: 이미지 자동화 플러그인 (jkf87/)
-- 코난쌤이 한국 최고 전문가로 활동 (14개 에이전트 운영, 책 출간)
+- 14개 에이전트 운영 사례 보고됨 (책 출간)
 - Hermes Agent와 연동 가능 (`hermes claw migrate`)
 
 ## See also
 
 - [ACP (Agent Client Protocol)](/wiki/concepts/agent-client-protocol/) — 핵심 프로토콜 개념
-- [코난쌤](/wiki/entities/conanssam/) — 한국 최고 OpenClaw 전문가
-- [제로초](/wiki/entities/zerocho/) — 실전 비교 리뷰어
 - [오마이클로(ohmyclaw)](# ) — 라우팅/오케스트레이션 도구
 - [Hermes Agent](/wiki/entities/hermes-agent/) — OpenClaw 마이그레이션 지원
 - [OpenClaw vs Hermes Agent 비교](/wiki/comparisons/openclaw-vs-hermes-agent/) — 실전 비교 분석
 - [OpenClaw Codex 이미지 자동화 설정](/wiki/important/setup/openclaw-codex-image-gen/) — 이미지 자동화 플러그인
-- [코난쌤 Claude CLI x OpenClaw](/wiki/sources/conanssam-claude-cli-openclaw/) — 상세 소스
-- [코난쌤 GPT 이미지 2.0 + OpenClaw](/wiki/sources/conanssam-gpt-image-2-openclaw/) — 상세 소스
+- [Claude CLI x OpenClaw 연동](/wiki/sources/conanssam-claude-cli-openclaw/) — 상세 소스
+- [GPT 이미지 2.0 + OpenClaw 자동화](/wiki/sources/conanssam-gpt-image-2-openclaw/) — 상세 소스

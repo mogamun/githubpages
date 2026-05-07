@@ -1,5 +1,5 @@
 ---
-title: 제로초 — OpenClaw vs Hermes Agent 실전 비교
+title: OpenClaw vs Hermes Agent 실전 비교
 created: 2026-04-29
 updated: 2026-04-29
 tags: [source, openclaw, hermes-agent, ai-agent, comparison, real-world-usage]
@@ -8,10 +8,10 @@ status: stable
 category: sources
 ---
 
-# 제로초 — OpenClaw vs Hermes Agent 실전 비교
+# OpenClaw vs Hermes Agent 실전 비교
 
 ## 개요
-제로초(Node.js 교과서 저자, 전 카카오모빌리티 파트장)가 OpenClaw와 Hermes Agent를 한 달간 실사용 후 비교한 결과. 결론은 "갈아타기가 아니라 역할 분담". 두 에이전트를 이중 구조로 함께 사용 중.
+OpenClaw와 Hermes Agent를 한 달간 실사용 후 비교한 결과. 결론은 "갈아타기가 아니라 역할 분담". 두 에이전트를 이중 구조로 함께 사용 중.
 
 ## 핵심 내용
 
@@ -45,7 +45,6 @@ category: sources
 > "AI 비서도 이제 하나만 쓰는 시대가 아니라 업무별로 여러 에이전트를 나눠 쓰는 시대가 된 거 같아요."
 
 ## See also
-- [제로초](/wiki/entities/zerocho/)
 - [OpenClaw](/wiki/entities/openclaw/)
 - [Hermes Agent](/wiki/entities/hermes-agent/)
 - [OpenClaw vs Hermes Agent 비교](/wiki/comparisons/openclaw-vs-hermes-agent/)

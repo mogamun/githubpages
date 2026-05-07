@@ -1,5 +1,5 @@
 ---
-title: 스마트대디 — GPT 이미지 2.0 핵심 활용법 15가지 + 프롬프트
+title: GPT 이미지 2.0 핵심 활용법 15가지 + 프롬프트
 created: 2026-04-24
 updated: 2026-04-24
 tags: [source, gpt-image, chatgpt, image-generation, prompt, commercial-use, thinking-mode]
@@ -8,11 +8,11 @@ status: stable
 category: sources
 ---
 
-# 스마트대디 — GPT 이미지 2.0 핵심 활용법 15가지
+# GPT 이미지 2.0 핵심 활용법 15가지
 
 ## 개요
 
-스마트대디(SmartDaddy) 채널에서 GPT 이미지 2.0의 상업적 활용 15가지를 실전 시연. 한국어/숫자 렌더링 정확도, 수정 능력, 띵킹 모드(Thinking Mode) 기반 자율 조사 기능을 중심으로 나노바나나와 비교하며 "이미지 시장의 판을 바꿨다"고 평가.
+GPT 이미지 2.0의 상업적 활용 15가지를 실전 시연. 한국어/숫자 렌더링 정확도, 수정 능력, 띵킹 모드(Thinking Mode) 기반 자율 조사 기능을 중심으로 나노바나나와 비교하며 "이미지 시장의 판을 바꿨다"고 평가.
 
 ## 핵심 내용
 
@@ -90,8 +90,7 @@ category: sources
 ## See also
 
 - [소스놀이터 GPT 이미지 2.0 코덱스 웹툰](/wiki/sources/gpt-image-2-codex-webtoon/) — 코덱스 CLI 무제한 이미지 설정 + 웹툰 자동화
-- [코난쌤 GPT 이미지 2.0 + OpenClaw](/wiki/sources/conanssam-gpt-image-2-openclaw/) — OpenClaw + Codex 이미지 자동화
+- [GPT 이미지 2.0 + OpenClaw 자동화](/wiki/sources/conanssam-gpt-image-2-openclaw/) — OpenClaw + Codex 이미지 자동화
 - [코덱스 이미지 무제한 생성 설정](/wiki/important/setup/codex-image-generation/) — Codex CLI에서 GPT 이미지 2.0 사용 설정
 - [OpenClaw Codex 이미지 자동화 설정](/wiki/important/setup/openclaw-codex-image-gen/) — OpenClaw 플러그인 설정
-- [스마트대디](/wiki/entities/smartdaddy/) — 채널 엔티티
 - [소스놀이터](/wiki/entities/source-playground/) — GPT 이미지 2.0 코덱스 시연 채널

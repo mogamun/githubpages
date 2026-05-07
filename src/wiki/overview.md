@@ -96,9 +96,9 @@ category: overview.md
 - [간결성-정확성 트레이드오프](/wiki/brevity-accuracy-tradeoff/): 장황 ≠ 정확, 간결 강제가 정확도 향상
 - [Claude Code](/wiki/entities/claude-code/): 소스 유출로 드러난 내부 구조, anti-distillation, KAIROS
 - AI 도구 경쟁: Claude Code(터미널) vs Cursor 3(IDE) vs Codex(OpenAI)
-- GPT 이미지 2.0: 한국어 렌더링 돌파, 수정 능력, 띵킹 모드 자율 조사 — [소스놀이터](/wiki/entities/source-playground/), [스마트대디](/wiki/entities/smartdaddy/), [코난쌤](/wiki/entities/conanssam/)
+- GPT 이미지 2.0: 한국어 렌더링 돌파, 수정 능력, 띵킹 모드 자율 조사 — [소스놀이터](/wiki/entities/source-playground/)
 - OpenClaw: 개인 AI 어시스턴트 플랫폼, ACP로 멀티에이전트 통합 — [OpenClaw](/wiki/entities/openclaw/), [ACP](/wiki/concepts/agent-client-protocol/)
-- [OpenClaw vs Hermes Agent](/wiki/comparisons/openclaw-vs-hermes-agent/): 개인 비서 vs AI 직원, "유전자가 다르다" — [제로초](/wiki/entities/zerocho/) 실전 비교
+- [OpenClaw vs Hermes Agent](/wiki/comparisons/openclaw-vs-hermes-agent/): 개인 비서 vs AI 직원, "유전자가 다르다" — 실전 비교 분석
 
 ### 8. Cross-Theme Connections
 - [ECS vs 멀티에이전트 조정](/wiki/ecs-vs-multi-agent-coordination/): "시스템 간 호출 금지" ≡ "도메인 경계" — 구조적 동형성
@@ -163,11 +163,11 @@ category: overview.md
 14. **MCP 설계 패턴이 "구조가 곧 프롬프트"를 프로토콜에서 실증**: Intent-grouped tools, tool search, programmatic tool calling 모두 "에이전트에게 어떤 구조로 정보를 주는가"가 품질을 결정한다는 테제의 프로토콜급 실증
 15. **CLI가 MCP보다 효율적일 수 있음**: agent-browser가 MCP 프로토콜 없이 CLI 기반으로 브라우저 자동화를 수행하며 Playwright MCP 대비 82% 적은 컨텍스트 사용. "에이전트-도구 연결"에서 프로토콜 오버헤드가 반드시 필요하지 않음을 실증
 16. **파일시스템 메모리 = LLM Wiki 패턴의 공식화**: Anthropic이 Managed Agents에 파일 기반 메모리를 공식 지원. Claude Code의 CLAUDE.md/memory → Managed Agents Memory → 이 LLM Wiki가 모두 같은 패턴. "파일로 저장된 구조화된 지식"이 세 가지 환경에서 독립적으로 수렴
-17. **AI 에이전트 "유전자" 차이**: 제로초의 실전 비교가 증명 — OpenClaw와 Hermes Agent는 설정으로 상호 대체 불가능한 근본적 설계 차이가 존재. "갈아타기"가 아닌 "역할 분담"이 정답. AI 에이전트 선택은 기능표 비교가 아닌 "나를 얼마나 아느냐"가 핵심 기준
+17. **AI 에이전트 "유전자" 차이**: 실전 비교가 증명 — OpenClaw와 Hermes Agent는 설정으로 상호 대체 불가능한 근본적 설계 차이가 존재. "갈아타기"가 아닌 "역할 분담"이 정답. AI 에이전트 선택은 기능표 비교가 아닌 "나를 얼마나 아느냐"가 핵심 기준
 18. **브라우저 자동화 3분야**: Playwright MCP(깨끗한 환경), agent-browser(컨텍스트 효율), mcp-chrome(사용자 환경)이 각각 다른 최적화 축을 가짐. "어떤 브라우저를 제어하느냐"가 도구 선택의 핵심 기준
 19. **Markdown이 프로그래밍 언어로**: Quarkdown이 CommonMark/GFM에 함수 호출을 도입해 Turing-complete Markdown 실현. 하나의 소스에서 책/논문/슬라이드/위키를 모두 생성. "구조가 곧 프롬프트" 테제의 확장 — 구조화된 Markdown이 곧 실행 가능한 프로그램. LLM Wiki의 출력 포맷으로 직접 활용 가능
 20. **단순함이 곧 성능이다**: Warp 자동완성이 Trie/인덱스 없이 `starts_with()` + 메모리 올인 + 비동기 I/O로 최고 체감 성능을 달성. "간결성=정확성" 테제의 아키텍처급 실증 — 복잡도를 추가하지 않고 제거함으로써 성능 확보
-21. **"LLM + Harness"가 에이전트의 본질**: 고범수의 독스 분석이 정의 — 에이전트는 단순 LLM 래퍼가 아닌 "LLM + 통제 도구(Harness)"의 결합. Harness는 세션, 스킬, 메모리, 샌드박스 등 LLM이 원하는 방향으로 동작하게 만드는 인프라. Superpowers/GSD/gstack의 CLAUDE.md 규칙도 Harness의 일종
+21. **"LLM + Harness"가 에이전트의 본질**: 독스 분석이 정의 — 에이전트는 단순 LLM 래퍼가 아닌 "LLM + 통제 도구(Harness)"의 결합. Harness는 세션, 스킬, 메모리, 샌드박스 등 LLM이 원하는 방향으로 동작하게 만드는 인프라. Superpowers/GSD/gstack의 CLAUDE.md 규칙도 Harness의 일종
 22. **클로즈 루프 학습 = Compounding의 메커니즘**: Hermes의 경험→스킬→개선→회상 순환이 Compounding Artifact의 구체적 작동 메커니즘을 보여줌. 모델 가중치 업데이트 없이 메모리+스킬로 누적 개선. 단, 엔트로피 문제(오래된 지식의 유용성 저하)가 과제
 23. **Curator = 엔트로피 문제의 구조적 해답**: v0.12.0의 자율 Curator가 스킬 무한 축적의 엔트로피 문제를 7일 주기 자동 정리로 해결. "큐레이션" 단계가 클로즈 루프를 한 단계 발전시킴. 지식 관리의 "적자 흐름" 문제(축적만 하고 정리하지 않음)에 대한 에이전트급 해법
 24. **에이전트 프레임워크의 커뮤니티 가속**: Hermes v0.12.0이 213명 기여자, 550 PR을 기록하며, 오픈소스 에이전트 프레임워크의 커뮤니티 기반 개발 속도가 상용 서비스를 압도할 수 있음을 실증
@@ -192,7 +192,6 @@ category: overview.md
 - [투더제이 TTJ](/wiki/ttj/): 바이브 코딩 수익화 유튜버, 치트키 15 가이드북
 - [AI Korea Community](/wiki/aikorea-community/): 한국어 AI 커뮤니티/뉴스 플랫폼
 - [Keygraph](/wiki/keygraph/): AI 보안 테스트 기업 (Shannon 개발사)
-- [스마트대디](/wiki/smartdaddy/): AI 도구 상업 활용 유튜버 (GPT 이미지 2.0 실전 시연)
 - [Figma](/wiki/figma/): 웹 기반 디자인 협업 도구, 공식 MCP 서버 (13개 Tool, Write to Canvas)
 - [갓대희](/wiki/goddaehee/): 한국어 기술 블로거, MCP 추천 시리즈
 - [헤이제임스](/wiki/heyjames/): 한국어 AI 코딩 유튜버, Claude Code 프레임워크 비교 분석
@@ -200,14 +199,11 @@ category: overview.md
 - [GSD](/wiki/gsd/): 컨텍스트 격리 Claude Code 프레임워크 (51K stars)
 - [gstack](/wiki/gstack/): 23역할 리뷰 게이트 Claude Code 프레임워크 (71K stars)
 - [Hermes Agent](/wiki/hermes-agent/): Nous Research 독립 자가 개선 AI 에이전트 (47 도구, 200+ 모델)
-- [코난쌤](/wiki/conanssam/): 한국어 AI 교육 유튜버, OpenClaw 전문가, 14개 에이전트 운영
 - [OpenClaw](/wiki/openclaw/): 개인 AI 어시스턴트 플랫폼, ACP 기반 멀티에이전트 통합
 - [ImageSorcery MCP](/wiki/imagesorcery-mcp/): Python 기반 로컬 이미지 처리 MCP 서버 (17개 도구)
 - [agent-browser](/wiki/entities/agent-browser/): AI 에이전트용 브라우저 자동화 CLI (Rust, 30.8k stars)
 - [mcp-chrome](/wiki/entities/mcp-chrome/): Chrome Extension 기반 MCP 서버 (사용자 실제 브라우저, 20+ 툴)
 - [Vercel Labs](/wiki/entities/vercel-labs/): agent-browser 개발 조직
 - [Managed Agents](/wiki/entities/managed-agents/): 클라우드 호스티드 Claude 에이전트 플랫폼
-- [제로초](/wiki/entities/zerocho/): Node.js 교육자, AI 에이전트 실전 비교 리뷰어
-- [고범수](/wiki/entities/beomsu-koh/): AI 에이전트 기술 리뷰어, Hermes 독스 심층 분석
 - [Quarkdown](/wiki/entities/quarkdown/): Turing-complete Markdown 조판 시스템
 - [Warp Terminal](/wiki/entities/warp-terminal/): Rust GPU 가속 터미널→ADE, AGPL 오픈소스

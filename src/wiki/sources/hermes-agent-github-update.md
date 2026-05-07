@@ -37,7 +37,7 @@ v0.12.0에서 1,096 커밋, 550 PR, **213명 기여자**. v0.11.0에서는 1,556
 
 ## See also
 - [Hermes Agent](/wiki/entities/hermes-agent/) — 엔티티 페이지 (대폭 갱신)
-- [고범수 Hermes Agent 리뷰](/wiki/sources/hermes-agent-review-beomsu/) — 이전 분석 (아키텍처 심층)
+- [Hermes Agent 독스 기반 기술 리뷰](/wiki/sources/hermes-agent-review-beomsu/) — 이전 분석 (아키텍처 심층)
 - [Closed Learning Loop](/wiki/concepts/closed-learning-loop/) — Curator 단계 추가
 - [LLM + Harness 모델](/wiki/concepts/llm-harness-model/) — 새 Harness 구성요소
 - [OpenClaw vs Hermes Agent](/wiki/comparisons/openclaw-vs-hermes-agent/) — 개발 속도 차이 확대

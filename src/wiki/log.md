@@ -13,9 +13,9 @@ category: log.md
 - Updated: wiki/entities/hermes-agent.md (8 백엔드, 19 메시징, Curator, Transport ABC, 개발 속도 테이블), wiki/concepts/closed-learning-loop.md (5단계 루프, Curator), wiki/concepts/llm-harness-model.md (v0.12.0 추가 구성요소), wiki/important/setup/hermes-agent-setup.md (Termux, backup, dashboard, curator, MCP, profiles), wiki/comparisons/openclaw-vs-hermes-agent.md (개발 속도, CLI), wiki/index.md, wiki/log.md, wiki/overview.md
 - Key insight: 자율 Curator가 클로즈 루프에 "큐레이션" 단계를 추가 — 스킬 무한 축적의 엔트로피 문제에 대한 구조적 해답. v0.12.0에서 213명 기여자, 2주 단위 릴리즈의 커뮤니티 기반 폭발적 성장.
 
-## [2026-05-04] ingest | 고범수 Hermes Agent 독스 리뷰
+## [2026-05-04] ingest | Hermes Agent 독스 기반 기술 리뷰
 - Ingested: raw/2026-05-04-hermes-agent-review-beomsu.md
-- Added: wiki/sources/hermes-agent-review-beomsu.md, wiki/entities/beomsu-koh.md, wiki/concepts/llm-harness-model.md, wiki/concepts/closed-learning-loop.md
+- Added: wiki/sources/hermes-agent-review-beomsu.md, wiki/concepts/llm-harness-model.md, wiki/concepts/closed-learning-loop.md
 - Updated: wiki/entities/hermes-agent.md (아키텍처 섹션 추가), wiki/comparisons/openclaw-vs-hermes-agent.md (Discord/CLI 차이점 추가), wiki/index.md, wiki/log.md, wiki/overview.md
 - Key insight: Hermes는 "LLM + Harness" 모델 — 단순 래퍼가 아닌 통제 도구 결합. 클로즈 루프 학습(경험→스킬→개선→회상)이 코어. 메모리와 대화 기록의 분리가 핵심 설계.
 
@@ -79,9 +79,9 @@ category: log.md
 - Updated: wiki/entities/agent-browser.md (See also), wiki/entities/claude-code.md (MCP 서버, See also), wiki/index.md, wiki/log.md, wiki/overview.md
 - Key insight: 브라우저 자동화에 3가지 접근법이 공존 — Playwright MCP(깨끗한 환경), agent-browser(컨텍스트 효율), mcp-chrome(사용자 환경 보존). 목적에 따라 선택 기준이 다름
 
-## [2026-04-29] ingest | 제로초 — OpenClaw vs Hermes Agent 한달 실전 비교
+## [2026-04-29] ingest | OpenClaw vs Hermes Agent 한달 실전 비교
 - Ingested: raw/2026-04-29-zerocho-openclaw-vs-hermes.md
-- Added: wiki/sources/zerocho-openclaw-vs-hermes.md, wiki/entities/zerocho.md, wiki/comparisons/openclaw-vs-hermes-agent.md
+- Added: wiki/sources/zerocho-openclaw-vs-hermes.md, wiki/comparisons/openclaw-vs-hermes-agent.md
 - Updated: wiki/entities/openclaw.md, wiki/entities/hermes-agent.md, wiki/index.md, wiki/log.md, wiki/overview.md
 - Key insight: AI 에이전트 간 "유전자 차이" — 설정으로 극복 불가능한 근본적 설계 차이가 존재. 갈아타기가 아닌 역할 분담이 최적
 
@@ -145,9 +145,9 @@ category: log.md
 - Updated: wiki/index.md (important/setup, stats), wiki/log.md
 - Key insight: Z AI 사용 시 `npx @z_ai/coding-helper` MCP 서버 설정 필수. 이미지 분석, 데이터 시각화, UI 비교, 에러 진단, OCR, 기술 다이어그램, 동영상 분석 기능 제공.
 
-## [2026-04-24] ingest | 스마트대디 — GPT 이미지 2.0 핵심 활용법 15가지
+## [2026-04-24] ingest | GPT 이미지 2.0 핵심 활용법 15가지
 - Ingested: raw/2026-04-24-gpt-image-2-15-use-cases.md (203줄 자막 전문)
-- Added: wiki/sources/gpt-image-2-15-use-cases.md, wiki/entities/smartdaddy.md
+- Added: wiki/sources/gpt-image-2-15-use-cases.md
 - Updated: wiki/index.md (sources, entities, stats), wiki/log.md, wiki/overview.md
 - Key insight: GPT 이미지 2.0의 수정 능력이 핵심 차별화. "AI 이미지는 생성보다 수정이 문제"인데 ChatGPT는 원하는 부분만 깔끔하게 수정 반영. 띵킹 모드로 자율 조사→추론→이미지 생성 파이프라인. 상세페이지, 랜딩페이지, 브랜드 키트 등 상업용 즉시 활용 가능. 숫자 계산도 정확.
 

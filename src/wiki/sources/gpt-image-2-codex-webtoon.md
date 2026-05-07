@@ -75,7 +75,7 @@ category: sources
 
 ## See also
 - [소스놀이터 엔티티](/wiki/entities/source-playground/)
-- [코난쌤 GPT 이미지 2.0 + OpenClaw](/wiki/sources/conanssam-gpt-image-2-openclaw/) — OpenClaw + Codex 이미지 자동화
+- [GPT 이미지 2.0 + OpenClaw 자동화](/wiki/sources/conanssam-gpt-image-2-openclaw/) — OpenClaw + Codex 이미지 자동화
 - [OpenClaw Codex 이미지 자동화 설정](/wiki/important/setup/openclaw-codex-image-gen/) — 플러그인 설정 가이드
 - [바이브코딩 치트키 15](/wiki/sources/ttj-vibe-coding-cheatkey-15/)
 - [시각화 프롬프트 템플릿](/wiki/concepts/visualization-prompt-template/)

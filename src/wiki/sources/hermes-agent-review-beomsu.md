@@ -1,5 +1,5 @@
 ---
-title: 고범수 — Hermes Agent 독스 리뷰
+title: Hermes Agent 독스 기반 기술 리뷰
 created: 2026-05-04
 updated: 2026-05-04
 tags: [source, hermes-agent, ai-agent, self-improving, nous-research, agent-architecture]
@@ -8,10 +8,10 @@ status: stable
 category: sources
 ---
 
-# 고범수 — Hermes Agent 독스 리뷰
+# Hermes Agent 독스 기반 기술 리뷰
 
 ## 개요
-고범수(Beomsu Koh)가 Hermes Agent 공식 독스와 GitHub를 깊게 읽으며 분석한 기술 리뷰. "LLM + Harness" 멘탈 모델, Closed Learning Loop 구조, Memory vs Conversation 분리, Prompt Cache 전략, 컨텍스트 윈도우 관리 등 핵심 아키텍처를 독스 기반으로 정리. 기존 제로초의 실전 비교와 보완되는 기술 심층 분석.
+Hermes Agent 공식 독스와 GitHub를 깊게 읽으며 분석한 기술 리뷰. "LLM + Harness" 멘탈 모델, Closed Learning Loop 구조, Memory vs Conversation 분리, Prompt Cache 전략, 컨텍스트 윈도우 관리 등 핵심 아키텍처를 독스 기반으로 정리. 실전 비교와 보완되는 기술 심층 분석.
 
 ## 핵심 내용
 
@@ -70,9 +70,8 @@ category: sources
 > "명령 많이 쓰지 말라. 한 번에 탁 해라. 트랜스포머는 이전 것들이 다 같이 들어가야 되니까."
 
 ## See also
-- [고범수](/wiki/entities/beomsu-koh/)
 - [Hermes Agent](/wiki/entities/hermes-agent/)
-- [제로초 OpenClaw vs Hermes 비교](/wiki/sources/zerocho-openclaw-vs-hermes/)
+- [OpenClaw vs Hermes 실전 비교](/wiki/sources/zerocho-openclaw-vs-hermes/)
 - [OpenClaw vs Hermes Agent](/wiki/comparisons/openclaw-vs-hermes-agent/)
 - [LLM + Harness 모델](/wiki/concepts/llm-harness-model/)
 - [Closed Learning Loop](/wiki/concepts/closed-learning-loop/)
