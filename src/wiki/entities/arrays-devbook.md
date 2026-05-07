@@ -1,5 +1,5 @@
 ---
-title: Array's DevBook
+title: "Array's DevBook"
 created: 2026-04-16
 updated: 2026-04-16
 tags: [entity, youtube-channel, game-dev, unity, ecs]

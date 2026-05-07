@@ -28,4 +28,4 @@ category: entities
 - (패턴이 발견되면 여기에 추가)
 
 ## See also
-- [CLAUDE.md](/wiki/entities/Users/mogamun/projects/stashYoutube/CLAUDE/)
+- CLAUDE.md — 프로젝트 루트 설정 파일

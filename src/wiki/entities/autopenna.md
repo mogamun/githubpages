@@ -18,7 +18,7 @@ category: entities
 - Capacitor 8 (네이티브 래핑, Android)
 - Tailwind CSS 3 (스타일링)
 - Zustand 5 + persist (상태 관리)
-- @mogamun/ai-core (서브모듈, 구 capacitor-gemma-core) — Ollama 웹 / Gemma 네이티브
+- ai-core (서브모듈, 구 capacitor-gemma-core) — Ollama 웹 / Gemma 네이티브
 - Zod 4 (스키마 검증)
 
 ## 빌드 파이프라인
@@ -53,6 +53,6 @@ cp android/app/build/outputs/apk/debug/app-debug.apk "/Volumes/Vol3So/autopenna-
 - (아직 없음)
 
 ## See also
-- [CLAUDE.md](/wiki/entities/Users/mogamun/projects/Autopenna/CLAUDE/)
+- CLAUDE.md — 프로젝트 루트 설정 파일
 - [모바일앱 개발 지침](/wiki/sources/mobile-app-guidelines/)
 - [빌드 파이프라인 상세](/wiki/../raw/2026-04-24-autopenna-work-build-pipeline/)

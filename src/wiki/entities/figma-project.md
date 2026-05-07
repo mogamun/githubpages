@@ -52,7 +52,7 @@ figma/
 - 자동 기록: 실수 교정, 사용자 지시, 반복 패턴
 
 ## See also
-- [CLAUDE.md](/wiki/entities/Users/mogamun/projects/figma/CLAUDE/)
-- [figmalist.md](/wiki/entities/Users/mogamun/projects/figma/figmalist/)
+- CLAUDE.md — 프로젝트 루트 설정 파일
+- figmalist.md — Figma 설정 목록
 - [figma](/wiki/entities/figma/) — Figma 엔티티
 - [Figma MCP 설치 및 사용방법](/wiki/sources/figma-mcp-setup-usage/)

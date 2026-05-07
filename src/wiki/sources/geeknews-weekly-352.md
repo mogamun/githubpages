@@ -1,5 +1,5 @@
 ---
-title: GeekNews Weekly #352 — 당신의 지식 저장소, LLM이 관리해드립니다
+title: "GeekNews Weekly #352 — 당신의 지식 저장소, LLM이 관리해드립니다"
 created: 2026-04-22
 updated: 2026-04-22
 tags: [source, weekly-digest, llm, ai-agent, claude-code, gemma, qwen]

@@ -26,7 +26,7 @@ category: log.md
 - Key insight: 캐스팅 시스템은 `CastCharacter`/`CastingPlan`을 별도 계층으로 두고, 게임은 자동 캐스팅 후 자동 진행, 글쓰기/커스텀은 수동 배치를 제공했다. 스토리 전용 캐릭터는 메모리 없이 시작하고 메인 등장인물 승격 후에만 메모리 대상이 된다.
 
 ## [2026-05-06] work | autopenna 등장인물 배치 시스템 설계
-- Added: raw/2026-05-06-autopenna-work-casting-system-plan.md, /Users/mogamun/projects/Autopenna/docs/CASTING_SYSTEM_PLAN.md
+- Added: raw/2026-05-06-autopenna-work-casting-system-plan.md
 - Updated: wiki/log.md
 - Source project: autopenna
 - Key insight: 기존 `CharacterTemplate`을 직접 확장하기보다 캐스팅용 `CastCharacter`/`CastingPlan` 계층을 두면, 내장 캐릭터와 스토리 전용 적/네임드/조연을 같은 roster로 다루면서 공방 탭과 WorldFrame/연대기 입력을 안정적으로 연결할 수 있다. 게임은 자동 캐스팅 후 2초 뒤 자동 진행, 글쓰기/커스텀은 수동 캐스팅으로 확정.

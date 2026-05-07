@@ -18,7 +18,7 @@ category: entities
 - Capacitor 8 (네이티브 래핑, Android)
 - Tailwind CSS 3 (스타일링)
 - Zustand 5 + persist (상태 관리)
-- @mogamun/ai-core (서브모듈) — Ollama 웹 / Gemma 네이티브
+- ai-core (서브모듈) — Ollama 웹 / Gemma 네이티브
 - TipTap 3 (리치 텍스트 에디터)
 
 ## 프로젝트 구조 (분석: 2026-04-24)
@@ -76,7 +76,7 @@ src/
 ### 진입점
 - 프론트엔드: `src/main.tsx` — StrictMode + App 마운트
 - 백엔드: `server/index.ts` (146줄) — Express 포트 3001, 프롬프트/템플릿/동기화 API
-- 모바일: `capacitor.config.ts` — appId: com.mogamun.ilgisseoyeong
+- 모바일: `capacitor.config.ts` — Capacitor 설정
 
 ### 라우팅
 - `/` → ProjectListPage (일기장 홈)
@@ -110,6 +110,6 @@ cp android/app/build/outputs/apk/debug/app-debug.apk "/Volumes/My/ilgisseoyeong-
 - (아직 없음)
 
 ## See also
-- [CLAUDE.md](/wiki/entities/Users/mogamun/projects/todaydailyeng/CLAUDE/)
+- CLAUDE.md — 프로젝트 루트 설정 파일
 - [autopenna (이전 프로젝트)](/wiki/entities/autopenna/)
 - [모바일앱 개발 지침](/wiki/sources/mobile-app-guidelines/)
