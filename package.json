@@ -5,7 +5,6 @@
   "description": "Personal blog built with Gatsby",
   "scripts": {
     "develop": "gatsby develop",
-    "prebuild": "node scripts/sync-wiki.js",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

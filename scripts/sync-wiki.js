@@ -163,7 +163,8 @@ function normalizeFrontmatter(content, relPath) {
   }
 
   // frontmatter 없음 → 기본값으로 생성
-  const title = path.basename(relPath, '.md');
+  const rawTitle = path.basename(relPath, '.md');
+  const title = /[:\[\]{}"'#]/.test(rawTitle) ? `"${rawTitle.replace(/"/g, '\\"')}"` : rawTitle;
   return `---\ntitle: ${title}\ncategory: ${category}\n---\n\n${content}`;
 }
 
