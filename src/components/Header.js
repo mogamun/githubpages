@@ -277,7 +277,7 @@ const Header = () => {
       </LogoWrap>
       <Nav>
         <NavLinks>
-          <li><NavLink to="/">Blog</NavLink></li>
+          <li><NavLink to="/wiki/">Blog</NavLink></li>
           <DropdownWrap ref={wrapRef}>
             <DropdownTrigger $open={open} onClick={() => setOpen(!open)}>
               Apps
