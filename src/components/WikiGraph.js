@@ -96,8 +96,7 @@ const GraphCanvas = styled.div`
 const Overlay = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
+  background: #fffff5;
   z-index: 2000;
   display: flex;
   flex-direction: column;
@@ -109,22 +108,22 @@ const ModalHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 16px 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   flex-shrink: 0;
 `;
 
 const ModalTitle = styled.span`
   font-size: 0.9rem;
   font-weight: 700;
-  color: #fff;
+  color: #1e1b4b;
   letter-spacing: 0.5px;
 `;
 
 const ModalClose = styled.button`
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 8px;
-  color: #fff;
+  color: #1e1b4b;
   cursor: pointer;
   padding: 6px 14px;
   font-size: 0.8rem;
@@ -134,7 +133,7 @@ const ModalClose = styled.button`
   gap: 6px;
   transition: background 0.2s;
 
-  &:hover { background: rgba(255,255,255,0.2); }
+  &:hover { background: rgba(0,0,0,0.1); }
 `;
 
 const Legend = styled.div`
@@ -142,7 +141,7 @@ const Legend = styled.div`
   gap: 16px;
   flex-wrap: wrap;
   padding: 8px 24px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
   flex-shrink: 0;
 `;
 
@@ -152,7 +151,7 @@ const LegendItem = styled.span`
   gap: 5px;
   font-size: 0.7rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.7);
+  color: rgba(0,0,0,0.6);
   text-transform: capitalize;
 `;
 
@@ -170,166 +169,147 @@ const ModalCanvas = styled.div`
   canvas { display: block; }
 `;
 
+const BG_COLOR = '#fffff5';
+const TEXT_COLOR = 'rgba(15,15,30,0.85)';
+const LINK_COLOR = 'rgba(0,0,0,0.08)';
+
 /* ── 그래프 렌더러 ── */
 function GraphRenderer({ graphData, currentSlug, width, height, onNodeClick, nodeSize = 1 }) {
   const containerRef = useRef(null);
   const fgRef = useRef(null);
+  const [ForceGraph2D, setFG] = useState(null);
+  const hoverRef = useRef(null);
+  const highlightRef = useRef({ nodes: new Set(), links: new Set() });
+  const neighborsRef = useRef({});
+  const nodeLinksRef = useRef({});
 
+  // dynamic import — 한 번만
   useEffect(() => {
-    if (!containerRef.current || !graphData) return;
+    import('react-force-graph-2d').then(mod => setFG(() => mod.default));
+  }, []);
 
-    let cancelled = false;
+  // 인접 맵 구축
+  useEffect(() => {
+    const neighbors = {};
+    const nodeLinks = {};
+    for (const link of graphData.links) {
+      const s = typeof link.source === 'object' ? link.source.id : link.source;
+      const t = typeof link.target === 'object' ? link.target.id : link.target;
+      if (!neighbors[s]) neighbors[s] = new Set();
+      if (!neighbors[t]) neighbors[t] = new Set();
+      neighbors[s].add(t);
+      neighbors[t].add(s);
+      if (!nodeLinks[s]) nodeLinks[s] = new Set();
+      if (!nodeLinks[t]) nodeLinks[t] = new Set();
+      nodeLinks[s].add(link);
+      nodeLinks[t].add(link);
+    }
+    neighborsRef.current = neighbors;
+    nodeLinksRef.current = nodeLinks;
+  }, [graphData]);
 
-    import('react-force-graph-2d').then(mod => {
-      if (cancelled || !containerRef.current) return;
-
-      const ForceGraph2D = mod.default;
-      const React = require('react');
-      const ReactDOM = require('react-dom/client');
-
-      // highlight 상태
-      const hoverNode = { current: null };
-      const highlightNodes = new Set();
-      const highlightLinks = new Set();
-
-      // 인접 맵
-      const neighbors = {};
-      const nodeLinks = {};
-      for (const link of graphData.links) {
-        const s = typeof link.source === 'object' ? link.source.id : link.source;
-        const t = typeof link.target === 'object' ? link.target.id : link.target;
-        if (!neighbors[s]) neighbors[s] = new Set();
-        if (!neighbors[t]) neighbors[t] = new Set();
-        neighbors[s].add(t);
-        neighbors[t].add(s);
-        if (!nodeLinks[s]) nodeLinks[s] = new Set();
-        if (!nodeLinks[t]) nodeLinks[t] = new Set();
-        nodeLinks[s].add(link);
-        nodeLinks[t].add(link);
-      }
-
-      const bgColor = '#fffff5';
-      const textColor = 'rgba(15,15,30,0.85)';
-      const linkColor = 'rgba(0,0,0,0.1)';
-
-      const handleNodeHover = (node) => {
-        highlightNodes.clear();
-        highlightLinks.clear();
-        if (node) {
-          hoverNode.current = node;
-          highlightNodes.add(node);
-          (neighbors[node.id] || []).forEach(nId => {
-            const n = graphData.nodes.find(n => n.id === nId);
-            if (n) highlightNodes.add(n);
-          });
-          (nodeLinks[node.id] || []).forEach(l => highlightLinks.add(l));
-        } else {
-          hoverNode.current = null;
-        }
-      };
-
-      const paintNode = (node, ctx, globalScale) => {
-        const isCurrent = node.id === currentSlug;
-        const isHovered = hoverNode.current?.id === node.id;
-        const isHighlighted = highlightNodes.has(node);
-        const hasHover = hoverNode.current !== null;
-
-        const baseColor = CAT_COLOR[node.category] || DEFAULT_COLOR;
-        const radius = (node.val || 2) * nodeSize * (isCurrent ? 1.8 : 1) * (isHovered ? 1.4 : 1);
-
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
-
-        if (isCurrent) {
-          // 현재 페이지: 빛나는 링
-          ctx.shadowBlur = 12;
-          ctx.shadowColor = baseColor;
-          ctx.fillStyle = baseColor;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-          ctx.strokeStyle = '#fff';
-          ctx.lineWidth = 1.5 / globalScale;
-          ctx.stroke();
-        } else if (hasHover && !isHighlighted) {
-          ctx.fillStyle = `${baseColor}30`;
-          ctx.fill();
-        } else {
-          if (isHovered || isHighlighted) {
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = baseColor;
-          }
-          ctx.fillStyle = baseColor;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        }
-
-        // 레이블: 줌 레벨이 충분하거나 hover 상태일 때
-        if (globalScale > 2.5 || isHovered || isCurrent) {
-          const label = node.title.length > 18 ? node.title.slice(0, 18) + '…' : node.title;
-          const fontSize = Math.max(3, 4.5 / globalScale);
-          ctx.font = `${isCurrent ? 600 : 400} ${fontSize}px sans-serif`;
-          ctx.fillStyle = isHovered || isCurrent ? textColor : `${textColor}90`;
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(label, node.x, node.y + radius + fontSize * 1.2);
-        }
-      };
-
-      const paintLink = (link, ctx) => {
-        const isHighlighted = highlightLinks.has(link);
-        ctx.strokeStyle = isHighlighted
-          ? `${CAT_COLOR[link.source?.category] || DEFAULT_COLOR}80`
-          : linkColor;
-        ctx.lineWidth = isHighlighted ? 1.5 : 0.5;
-      };
-
-      const el = React.createElement(ForceGraph2D, {
-        ref: (fg) => {
-          if (fg) {
-            fgRef.current = fg;
-            // 시뮬레이션 안정화 후에도 reheat 가능하게 warmup
-            fg.d3Force('charge').strength(-30);
-          }
-        },
-        graphData,
-        width,
-        height,
-        backgroundColor: bgColor,
-        nodeCanvasObject: paintNode,
-        nodeCanvasObjectMode: () => 'replace',
-        linkCanvasObjectMode: () => 'after',
-        linkCanvasObject: paintLink,
-        onNodeHover: handleNodeHover,
-        onNodeClick: (node) => onNodeClick && onNodeClick(node),
-        onNodeDrag: (node) => { node.fx = node.x; node.fy = node.y; },
-        onNodeDragEnd: (node) => { node.fx = null; node.fy = null; },
-        linkWidth: 0.5,
-        linkColor: () => linkColor,
-        nodeRelSize: 3,
-        cooldownTicks: Infinity,
-        cooldownTime: 0,
-        d3AlphaDecay: 0.008,
-        d3VelocityDecay: 0.3,
-        enableNodeDrag: true,
-        enableZoomInteraction: true,
-        enablePanInteraction: true,
+  const handleNodeHover = useCallback((node) => {
+    const hl = highlightRef.current;
+    hl.nodes.clear();
+    hl.links.clear();
+    if (node) {
+      hoverRef.current = node;
+      hl.nodes.add(node);
+      (neighborsRef.current[node.id] || []).forEach(nId => {
+        const n = graphData.nodes.find(x => x.id === nId);
+        if (n) hl.nodes.add(n);
       });
+      (nodeLinksRef.current[node.id] || []).forEach(l => hl.links.add(l));
+    } else {
+      hoverRef.current = null;
+    }
+  }, [graphData]);
 
-      const root = ReactDOM.createRoot(containerRef.current);
-      root.render(el);
+  const paintNode = useCallback((node, ctx, globalScale) => {
+    const isCurrent = node.id === currentSlug;
+    const isHovered = hoverRef.current?.id === node.id;
+    const isHighlighted = highlightRef.current.nodes.has(node);
+    const hasHover = hoverRef.current !== null;
 
-      containerRef.current._root = root;
-    });
+    const baseColor = CAT_COLOR[node.category] || DEFAULT_COLOR;
+    const radius = (node.val || 2) * nodeSize * (isCurrent ? 1.8 : 1) * (isHovered ? 1.4 : 1);
 
-    return () => {
-      cancelled = true;
-      if (containerRef.current?._root) {
-        try { containerRef.current._root.unmount(); } catch {}
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
+
+    if (isCurrent) {
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = baseColor;
+      ctx.fillStyle = baseColor;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 1.5 / globalScale;
+      ctx.stroke();
+    } else if (hasHover && !isHighlighted) {
+      ctx.fillStyle = `${baseColor}25`;
+      ctx.fill();
+    } else {
+      if (isHovered || isHighlighted) {
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = baseColor;
       }
-    };
-  }, [graphData, currentSlug, width, height, nodeSize]); // eslint-disable-line react-hooks/exhaustive-deps
+      ctx.fillStyle = baseColor;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
 
-  return <div ref={containerRef} style={{ width, height }} />;
+    // 레이블: 호버 또는 현재 페이지만, 호버 시 2배 크기
+    if (isHovered || isCurrent) {
+      const label = node.title.length > 24 ? node.title.slice(0, 24) + '…' : node.title;
+      const baseFontSize = Math.max(3, 4.5 / globalScale);
+      const fontSize = isHovered ? baseFontSize * 2 : baseFontSize * 1.3;
+      ctx.font = `${isCurrent || isHovered ? 700 : 400} ${fontSize}px sans-serif`;
+      ctx.fillStyle = TEXT_COLOR;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(label, node.x, node.y + radius + fontSize * 1.2);
+    }
+  }, [currentSlug, nodeSize]);
+
+  const paintLink = useCallback((link, ctx) => {
+    const isHighlighted = highlightRef.current.links.has(link);
+    ctx.strokeStyle = isHighlighted
+      ? `${CAT_COLOR[link.source?.category] || DEFAULT_COLOR}80`
+      : LINK_COLOR;
+    ctx.lineWidth = isHighlighted ? 1.5 : 0.5;
+  }, []);
+
+  if (!ForceGraph2D || !graphData) return <div ref={containerRef} style={{ width, height }} />;
+
+  return (
+    <ForceGraph2D
+      ref={fgRef}
+      graphData={graphData}
+      width={width}
+      height={height}
+      backgroundColor={BG_COLOR}
+      nodeCanvasObject={paintNode}
+      nodeCanvasObjectMode={() => 'replace'}
+      linkCanvasObjectMode={() => 'after'}
+      linkCanvasObject={paintLink}
+      onNodeHover={handleNodeHover}
+      onNodeClick={(node) => onNodeClick && onNodeClick(node)}
+      onNodeDrag={(node) => { node.fx = node.x; node.fy = node.y; }}
+      onNodeDragEnd={(node) => { node.fx = null; node.fy = null; }}
+      linkWidth={0.5}
+      linkColor={() => LINK_COLOR}
+      nodeRelSize={3}
+      warmupTicks={80}
+      cooldownTicks={Infinity}
+      cooldownTime={0}
+      d3AlphaDecay={0.005}
+      d3VelocityDecay={0.3}
+      enableNodeDrag={true}
+      enableZoomInteraction={true}
+      enablePanInteraction={true}
+    />
+  );
 }
 
 /* ── 메인 컴포넌트 ── */
@@ -340,7 +320,6 @@ const WikiGraph = ({ currentSlug }) => {
   const sidebarRef = useRef(null);
   const [sidebarSize, setSidebarSize] = useState({ w: 260, h: 500 });
 
-  // 그래프 데이터 로드
   useEffect(() => {
     fetch('/wiki-graph.json')
       .then(r => r.json())
@@ -348,7 +327,6 @@ const WikiGraph = ({ currentSlug }) => {
       .catch(() => {});
   }, []);
 
-  // 사이드바 크기 측정
   useEffect(() => {
     if (!sidebarRef.current) return;
     const ro = new ResizeObserver(([entry]) => {
