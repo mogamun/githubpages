@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { graphql, Link } from 'gatsby';
 import styled, { keyframes } from 'styled-components';
-import Layout from '../../components/Layout';
+import WikiLayout from '../../components/WikiLayout';
 import SEO from '../../components/SEO';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
@@ -17,12 +17,12 @@ const shimmerAnim = keyframes`
 
 /* ── 페이지 레이아웃 ── */
 const PageWrapper = styled.div`
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 120px 24px 80px;
+  padding: 48px 28px 80px;
 
   @media (max-width: 768px) {
-    padding: 100px 16px 60px;
+    padding: 32px 16px 60px;
   }
 `;
 
@@ -126,7 +126,14 @@ const FilterChip = styled.button`
 
 /* ── 카테고리 섹션 ── */
 const CategorySection = styled.section`
-  margin-bottom: 56px;
+  margin-bottom: 48px;
+  background: ${({ theme }) => theme.colors.glass};
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid ${({ theme }) => theme.colors.glassBorder};
+  border-radius: 20px;
+  padding: 24px 24px 28px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 `;
 
 const CategoryHeader = styled.div`
@@ -134,10 +141,22 @@ const CategoryHeader = styled.div`
   align-items: center;
   gap: 12px;
   margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.glassBorder};
+`;
+
+const CategoryAccent = styled.span`
+  display: inline-block;
+  width: 4px;
+  height: 22px;
+  border-radius: 4px;
+  background: ${({ $color }) => $color || '#818cf8'};
+  flex-shrink: 0;
+  box-shadow: 0 0 8px ${({ $color }) => $color || '#818cf8'}60;
 `;
 
 const CategoryTitle = styled.h2`
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   margin: 0;
   color: ${({ theme }) => theme.colors.headline};
@@ -147,11 +166,11 @@ const CategoryTitle = styled.h2`
 const CategoryCount = styled.span`
   padding: 2px 10px;
   border-radius: 999px;
-  background: ${({ theme }) => `${theme.colors.primary}15`};
-  border: 1px solid ${({ theme }) => `${theme.colors.primary}30`};
+  background: ${({ $color }) => `${$color || '#818cf8'}18`};
+  border: 1px solid ${({ $color }) => `${$color || '#818cf8'}40`};
   font-size: 0.72rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ $color }) => $color || '#818cf8'};
 `;
 
 const CategoryLine = styled.div`
@@ -163,26 +182,44 @@ const CategoryLine = styled.div`
 /* ── 위키 카드 그리드 ── */
 const CardGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
 `;
 
 const WikiCard = styled(Link)`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 18px 20px;
-  border-radius: 16px;
-  background: ${({ theme }) => theme.colors.glass};
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  padding: 16px 18px 16px 22px;
+  border-radius: 14px;
+  background: ${({ theme }) => theme.colors.background};
   border: 1px solid ${({ theme }) => theme.colors.glassBorder};
   text-decoration: none;
   color: inherit;
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 
+  /* 기본 그림자 — 배경에서 살짝 떠 있는 느낌 */
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+
+  /* 좌측 카테고리 컬러 액센트 바 */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: ${({ $color }) => $color || '#818cf8'};
+    opacity: 0.7;
+    transition: opacity 0.25s, height 0.25s;
+  }
+
+  /* shimmer */
   &::after {
     content: '';
     position: absolute;
@@ -197,20 +234,31 @@ const WikiCard = styled(Link)`
   }
 
   &:hover {
-    border-color: ${({ theme }) => `${theme.colors.primary}50`};
-    box-shadow: 0 4px 24px ${({ theme }) => theme.colors.glowPrimary};
+    transform: translateY(-4px);
+    border-color: ${({ $color }) => `${$color || '#818cf8'}60`};
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.12),
+      0 12px 40px rgba(0, 0, 0, 0.16),
+      0 0 0 1px ${({ $color }) => `${$color || '#818cf8'}30`},
+      0 0 32px ${({ $color }) => `${$color || '#818cf8'}20`};
     opacity: 1;
 
-    &::after { opacity: 1; }
+    &::before { opacity: 1; top: 8px; bottom: 8px; }
+    &::after  { opacity: 1; }
   }
 `;
 
 const CardTitle = styled.h3`
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.45;
   color: ${({ theme }) => theme.colors.headline};
+  transition: color 0.25s ease;
+
+  ${WikiCard}:hover & {
+    color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 const CardMeta = styled.div`
@@ -290,7 +338,17 @@ const CATEGORY_EMOJI = {
   corrections: '✏️',
 };
 
-const CATEGORY_ORDER = ['concepts', 'entities', 'comparisons', 'sources', 'synthesis', 'important', 'corrections'];
+const CATEGORY_COLOR = {
+  important:   '#fbbf24',
+  sources:     '#34d399',
+  concepts:    '#818cf8',
+  entities:    '#f472b6',
+  comparisons: '#fb923c',
+  synthesis:   '#a78bfa',
+  corrections: '#60a5fa',
+};
+
+const CATEGORY_ORDER = ['important', 'sources', 'concepts', 'entities', 'comparisons', 'synthesis', 'corrections'];
 
 function parseTags(raw) {
   if (!raw) return [];
@@ -361,7 +419,7 @@ const WikiIndexPage = ({ data }) => {
     : [activeCategory].filter(c => grouped[c]);
 
   return (
-    <Layout>
+    <WikiLayout currentSlug="/wiki/">
       <SEO title="Wiki" />
       <PageWrapper>
         {/* 히어로 */}
@@ -402,42 +460,46 @@ const WikiIndexPage = ({ data }) => {
         {sortedCategories.length === 0 ? (
           <EmptyState>검색 결과가 없습니다.</EmptyState>
         ) : (
-          sortedCategories.map(cat => (
-            <RevealSection key={cat}>
-              <CategorySection>
-                <CategoryHeader>
-                  <CategoryTitle>
-                    {CATEGORY_EMOJI[cat] || '📁'} {cat}
-                  </CategoryTitle>
-                  <CategoryCount>{grouped[cat].length}</CategoryCount>
-                  <CategoryLine />
-                </CategoryHeader>
-                <CardGrid>
-                  {grouped[cat].map(item => (
-                    <WikiCard key={item.slug} to={item.slug}>
-                      <CardTitle>{item.title}</CardTitle>
-                      {item.tags.length > 0 && (
-                        <CardTags>
-                          {item.tags.slice(0, 4).map(t => (
-                            <CardTag key={t}>#{t}</CardTag>
-                          ))}
-                        </CardTags>
-                      )}
-                      <CardMeta>
-                        <CardDate>{item.updated || item.created}</CardDate>
-                        {item.status && (
-                          <CardStatus $s={item.status}>{item.status}</CardStatus>
+          sortedCategories.map(cat => {
+            const color = CATEGORY_COLOR[cat];
+            return (
+              <RevealSection key={cat}>
+                <CategorySection>
+                  <CategoryHeader>
+                    <CategoryAccent $color={color} />
+                    <CategoryTitle>
+                      {CATEGORY_EMOJI[cat] || '📁'} {cat}
+                    </CategoryTitle>
+                    <CategoryCount $color={color}>{grouped[cat].length}</CategoryCount>
+                    <CategoryLine />
+                  </CategoryHeader>
+                  <CardGrid>
+                    {grouped[cat].map(item => (
+                      <WikiCard key={item.slug} to={item.slug} $color={color}>
+                        <CardTitle>{item.title}</CardTitle>
+                        {item.tags.length > 0 && (
+                          <CardTags>
+                            {item.tags.slice(0, 4).map(t => (
+                              <CardTag key={t}>#{t}</CardTag>
+                            ))}
+                          </CardTags>
                         )}
-                      </CardMeta>
-                    </WikiCard>
-                  ))}
-                </CardGrid>
-              </CategorySection>
-            </RevealSection>
-          ))
+                        <CardMeta>
+                          <CardDate>{item.updated || item.created}</CardDate>
+                          {item.status && (
+                            <CardStatus $s={item.status}>{item.status}</CardStatus>
+                          )}
+                        </CardMeta>
+                      </WikiCard>
+                    ))}
+                  </CardGrid>
+                </CategorySection>
+              </RevealSection>
+            );
+          })
         )}
       </PageWrapper>
-    </Layout>
+    </WikiLayout>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled, { keyframes } from 'styled-components';
-import Layout from '../components/Layout';
+import WikiLayout from '../components/WikiLayout';
 import SEO from '../components/SEO';
 
 const fadeUp = keyframes`
@@ -13,11 +13,11 @@ const fadeUp = keyframes`
 const PageWrapper = styled.div`
   max-width: 860px;
   margin: 0 auto;
-  padding: 120px 24px 80px;
+  padding: 48px 32px 80px;
   animation: ${fadeUp} 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 
   @media (max-width: 768px) {
-    padding: 100px 16px 60px;
+    padding: 32px 16px 60px;
   }
 `;
 
@@ -287,8 +287,10 @@ const WikiPage = ({ data }) => {
 
   const category = frontmatter.category || '';
 
+  const slug = data.markdownRemark.fields?.slug || '';
+
   return (
-    <Layout>
+    <WikiLayout currentSlug={slug}>
       <SEO title={frontmatter.title} />
       <PageWrapper>
         {/* 브레드크럼 */}
@@ -339,7 +341,7 @@ const WikiPage = ({ data }) => {
           <NavBtn to="/wiki/">← 위키 목록으로</NavBtn>
         </BottomNav>
       </PageWrapper>
-    </Layout>
+    </WikiLayout>
   );
 };
 
@@ -348,6 +350,7 @@ export default WikiPage;
 export const query = graphql`
   query WikiPageQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      fields { slug }
       html
       frontmatter {
         title
