@@ -19,7 +19,10 @@ const CardLink = styled(Link)`
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid ${({ theme }) => theme.colors.glassBorder};
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 0 0 1px ${({ theme }) => theme.colors.glassBorder};
   transition: box-shadow 0.3s ease;
   position: relative;
   will-change: transform;
@@ -42,9 +45,10 @@ const CardLink = styled(Link)`
 
   &:hover {
     box-shadow:
-      0 8px 40px rgba(0, 0, 0, 0.12),
-      0 0 0 1px ${({ theme }) => theme.colors.primary}40,
-      0 0 30px ${({ theme }) => theme.colors.glowPrimary};
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      0 16px 48px rgba(0, 0, 0, 0.18),
+      0 0 0 1px ${({ theme }) => theme.colors.primary}50,
+      0 0 40px ${({ theme }) => theme.colors.glowPrimary};
     opacity: 1;
 
     &::before {
