@@ -27,13 +27,15 @@ const SEO = ({ title, description, pathname, children }) => {
   return (
     <>
       <title>{seo.title}</title>
+      <link rel="icon" type="image/webp" href="/icon-site.webp" />
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={seo.keywords} />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={seo.url} />
-      <meta name="twitter:card" content="summary" />
+      <meta property="og:image" content={`${siteUrl}/og-cover.webp`} />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       {children}
