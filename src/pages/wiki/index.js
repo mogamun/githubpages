@@ -19,55 +19,11 @@ const shimmerAnim = keyframes`
 const PageWrapper = styled.div`
   max-width: 1100px;
   margin: 0 auto;
-  padding: 48px 28px 80px;
+  padding: 24px 28px 80px;
 
   @media (max-width: 768px) {
-    padding: 32px 16px 60px;
+    padding: 16px 16px 60px;
   }
-`;
-
-/* ── 히어로 ── */
-const HeroArea = styled.div`
-  margin-bottom: 60px;
-  animation: ${fadeUp} 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-`;
-
-const HeroTitle = styled.h1`
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 900;
-  margin: 0 0 12px;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.primary},
-    ${({ theme }) => theme.colors.secondary}
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-`;
-
-const HeroDesc = styled.p`
-  font-size: 1rem;
-  color: ${({ theme }) => theme.colors.gray};
-  margin: 0 0 28px;
-  line-height: 1.7;
-`;
-
-const StatsRow = styled.div`
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-`;
-
-const StatChip = styled.div`
-  padding: 6px 16px;
-  border-radius: 999px;
-  background: ${({ theme }) => theme.colors.glass};
-  border: 1px solid ${({ theme }) => theme.colors.glassBorder};
-  backdrop-filter: blur(8px);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.primary};
 `;
 
 /* ── 검색 + 필터 ── */

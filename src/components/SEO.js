@@ -27,7 +27,8 @@ const SEO = ({ title, description, pathname, children }) => {
   return (
     <>
       <title>{seo.title}</title>
-      <link rel="icon" type="image/webp" href="/icon-site.webp" />
+      <link rel="icon" type="image/png" href="/favicon.png" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={seo.keywords} />
       <meta property="og:title" content={seo.title} />
