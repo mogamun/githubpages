@@ -21,7 +21,7 @@ Vercel Labs가 개발한 AI 에이전트용 브라우저 자동화 CLI. 순수 R
 - **다중 클라우드**: Browserless, Browserbase, Browser Use, Kernel, AgentCore 지원
 - **React DevTools**: 컴포넌트 트리, props, hooks, state 검사 기능 내장
 
-![](/wiki-assets/Pasted image 20260507115527.png)
+![](/wiki-assets/Pasted%20image%2020260507115527.png)
 ## 원문 인용
 > agent-browser uses a client-daemon architecture: Rust CLI parses commands, communicates with daemon. Pure Rust daemon using direct CDP, no Node.js required.
 

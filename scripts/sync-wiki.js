@@ -112,12 +112,12 @@ function transformContent(content, currentRel) {
     if (/^https?:\/\//.test(href)) return full;
     const decoded = decodeURIComponent(href.trim());
     const basename = path.basename(decoded);
-    return `![${alt}](/wiki-assets/${basename})`;
+    return `![${alt}](/wiki-assets/${encodeURIComponent(basename)})`;
   });
 
   out = out.replace(/!\[\[([^\]]+)\]\]/g, (full, inner) => {
     const basename = path.basename(inner.trim());
-    return `![${basename}](/wiki-assets/${basename})`;
+    return `![${basename}](/wiki-assets/${encodeURIComponent(basename)})`;
   });
 
   // 2. .md 링크 변환
