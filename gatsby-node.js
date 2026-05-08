@@ -70,4 +70,14 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     }
   });
+
+  // Kit pages
+  const { KIT_TOOLS } = require('./src/data/kit-tools');
+  for (const tool of KIT_TOOLS) {
+    createPage({
+      path: `/kit/${tool.slug}`,
+      component: path.resolve(`./src/templates/kit-page.js`),
+      context: { slug: tool.slug },
+    });
+  }
 };

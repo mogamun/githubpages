@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: stretch;
   min-height: 100vh;
-  padding-top: 70px; /* header height */
+  padding-top: 70px;
 `;
 
 const Main = styled.main`

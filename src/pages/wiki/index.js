@@ -17,8 +17,6 @@ const shimmerAnim = keyframes`
 
 /* ── 페이지 레이아웃 ── */
 const PageWrapper = styled.div`
-  max-width: 1100px;
-  margin: 0 auto;
   padding: 24px 28px 80px;
 
   @media (max-width: 768px) {
@@ -138,8 +136,8 @@ const CategoryLine = styled.div`
 /* ── 위키 카드 그리드 ── */
 const CardGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(384px, 1fr));
+  gap: 24px;
 
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
@@ -150,8 +148,8 @@ const WikiCard = styled(Link)`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 22px 24px 20px 28px;
-  border-radius: 18px;
+  padding: 26px 28px 24px 32px;
+  border-radius: 20px;
   background: ${({ theme }) => theme.colors.background};
   border: 1px solid ${({ theme }) => theme.colors.glassBorder};
   text-decoration: none;
@@ -205,12 +203,12 @@ const WikiCard = styled(Link)`
   }
 
   @media (max-width: 480px) {
-    padding: 18px 20px 16px 24px;
+    padding: 20px 22px 18px 26px;
   }
 `;
 
 const CardTitle = styled.h3`
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin: 0;
   line-height: 1.45;
