@@ -221,14 +221,20 @@ const DropdownItemDesc = styled.span`
   margin-top: 2px;
 `;
 
+const tools = [
+  { icon: '✂️', title: 'PDF Split', desc: 'PDF 페이지 분할', to: '/tools/pdf-split/' },
+];
+
 const apps = [
   { icon: '📝', title: '일기써영', desc: 'AI 영어 일기 교정', to: '/todaydailyeng/' },
 ];
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [toolOpen, setToolOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const wrapRef = useRef(null);
+  const toolRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -240,6 +246,9 @@ const Header = () => {
     const handleClick = (e) => {
       if (wrapRef.current && !wrapRef.current.contains(e.target)) {
         setOpen(false);
+      }
+      if (toolRef.current && !toolRef.current.contains(e.target)) {
+        setToolOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClick);
@@ -279,6 +288,25 @@ const Header = () => {
         <NavLinks>
           <li><NavLink to="/wiki/">Blog</NavLink></li>
           <li><NavLink to="/kit/">Kit</NavLink></li>
+          <DropdownWrap ref={toolRef}>
+            <DropdownTrigger $open={toolOpen} onClick={() => setToolOpen(!toolOpen)}>
+              Tools
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M3 5L6 8L9 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </DropdownTrigger>
+            <DropdownMenu $open={toolOpen}>
+              {tools.map((tool) => (
+                <DropdownItem key={tool.to} to={tool.to} onClick={() => setToolOpen(false)}>
+                  <DropdownIcon>{tool.icon}</DropdownIcon>
+                  <DropdownInfo>
+                    <DropdownItemTitle>{tool.title}</DropdownItemTitle>
+                    <DropdownItemDesc>{tool.desc}</DropdownItemDesc>
+                  </DropdownInfo>
+                </DropdownItem>
+              ))}
+            </DropdownMenu>
+          </DropdownWrap>
           <DropdownWrap ref={wrapRef}>
             <DropdownTrigger $open={open} onClick={() => setOpen(!open)}>
               Apps
